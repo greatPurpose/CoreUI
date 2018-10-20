@@ -3,6 +3,7 @@ import { Nav, NavItem, NavLink, Progress, TabContent, TabPane, ListGroup, ListGr
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { AppSwitch } from '@coreui/react'
+import {SwithForm} from './SwitchForm'
 
 const propTypes = {
   children: PropTypes.node,
@@ -18,7 +19,14 @@ class DefaultAside extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       activeTab: '1',
+      mySwitch: true
     };
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(e){
+    
+      this.setState({mySwitch: e.target.checked});
   }
 
   toggle(tab) {
@@ -59,6 +67,14 @@ class DefaultAside extends Component {
                        this.toggle('3');
                      }}>
               <i className="icon-settings"></i>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink className={classNames({ active: this.state.activeTab === '4' })}
+                     onClick={() => {
+                       this.toggle('4');
+                     }}>
+               <i className="fa fa-handshake-o"></i>
             </NavLink>
           </NavItem>
         </Nav>
@@ -274,7 +290,7 @@ class DefaultAside extends Component {
             <div className="aside-options">
               <div className="clearfix mt-3">
                 <small><b>Option 4</b></small>
-                <AppSwitch className={'float-right'} variant={'pill'} label color={'success'} defaultChecked size={'sm'} />
+                <AppSwitch className={'float-right'} variant={'default'} label color={'success'} defaultChecked size={'sm'} />
               </div>
             </div>
 
@@ -305,6 +321,20 @@ class DefaultAside extends Component {
             <Progress className="progress-xs" color="success" value="10" />
             <small className="text-muted">25GB/256GB</small>
           </TabPane>
+          <TabPane tabId="4" className="p-3">
+            <div className="aside-options">
+              <div className="clearfix mt-3">
+                <small><b>Switch default</b></small>
+                <AppSwitch className={'float-right'} color={'warning'} onChange={this.onChange} checked />
+              </div>
+            </div>
+              <SwithForm checkVal={this.state.mySwitch}/>
+
+            
+
+
+          </TabPane>
+        
         </TabContent>
       </React.Fragment>
     );

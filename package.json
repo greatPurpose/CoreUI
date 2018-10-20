@@ -9,7 +9,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git@github.com:coreui/coreui-free-react-admin-template.git"
+    "url": "git+ssh://git@github.com/coreui/coreui-free-react-admin-template.git"
   },
   "dependencies": {
     "@coreui/coreui": "^2.0.15",
@@ -35,10 +35,12 @@
     "react-router-dom": "^4.3.1",
     "react-test-renderer": "^16.5.2",
     "reactstrap": "^6.5.0",
+    "serve": "^10.0.2",
     "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
-    "react-scripts": "^2.0.4"
+    "react-scripts": "^2.0.4",
+    "webpack-cli": "^3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -58,5 +60,6 @@
     "not dead",
     "not ie <= 9",
     "not op_mini all"
-  ]
+  ],
+  "main": "index.js"
 }
